@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {Button} from "./components/clear/Button";
+import {Checkbox} from "./components/clear/Checkbox";
+import {InputText} from "./components/clear/InputText";
+import { Card } from './components/layout/Card';
+import {Container} from "./components/layout/Container";
+import styled from "styled-components";
+import {RadioButtons} from "./components/clear/RadioButtons";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    // I must organize examples for each component!!!
+    const [boolean, setBoolean] = useState(false)
+    console.log(boolean)
+
+    const arr = ["x", "y", "z"];
+    const [value, onChangeOption] = useState(arr[1]);
+
+    return (
+        <Container>
+            <CardsWrapper>
+                <Card>
+                    <Button>Button</Button>
+                </Card>
+                <Card>
+                    <Checkbox onChange={() => setBoolean(!boolean)} checked={boolean}>Checkbox</Checkbox>
+                </Card>
+                <Card>
+                    <InputText/>
+                </Card>
+                <Card>
+                    <RadioButtons options={arr}
+                                  value={value}
+                                  onChangeOption={onChangeOption}/>
+                </Card>
+            </CardsWrapper>
+        </Container>
+    )
 }
 
 export default App;
+
+const CardsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
