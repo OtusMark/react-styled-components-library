@@ -1,6 +1,5 @@
 import React, {ChangeEvent, InputHTMLAttributes, DetailedHTMLProps} from "react";
-import s from './Radio.module.scss'
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -54,7 +53,7 @@ const RadioContainer = styled.label`
   
   display: block;
   
-  padding-left: 30px;
+  padding-left: 25px;
   padding-right: 15px;
   margin-bottom: 12px;
   
@@ -89,11 +88,11 @@ const RadioContainer = styled.label`
 
   // Style the indicator (dot/circle)
   & .checkmark:after {
-    top: 6px;
-    left: 6px;
+    top: 5px;
+    left: 5px;
     
-    width: 9px;
-    height: 9px;
+    width: 6px;
+    height: 6px;
     
     border-radius: 50%;
     background: ${({theme}) => theme.color.white};
@@ -103,11 +102,11 @@ const RadioContainer = styled.label`
 const Checkmark = styled.div`
   // Create a custom radio button
   position: absolute;
-  top: 0;
+  bottom: 2px;
   left: 0;
   
-  height: 21px;
-  width: 21px;
+  height: 16px;
+  width: 16px;
   
   background-color: ${({theme}) => theme.color.grey["400"]};
   border-radius: 50%;

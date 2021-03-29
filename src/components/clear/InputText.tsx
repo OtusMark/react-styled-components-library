@@ -1,5 +1,5 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from "react";
-import styled, {StyledComponentProps} from "styled-components";
+import styled, {StyledComponentProps} from "styled-components/macro";
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
@@ -54,7 +54,8 @@ export const InputText: React.FC<SuperInputTextPropsType> = (
 
 const InputTextWrapper = styled.div`
   position: relative;
-  
+
+  width: 100%;
 `
 
 const StyledInput = styled.input<StyledComponentProps<any, any, any, any>>`
@@ -63,8 +64,11 @@ const StyledInput = styled.input<StyledComponentProps<any, any, any, any>>`
   padding: 1rem .5rem;
   margin-bottom: 20px;
   
-  width: 100%;
   height: 20px;
+  width: 100%;
+
+  font-size: ${({theme}) => theme.font.size.default};
+  font-family: ${({theme}) => theme.font.family.default};
   
   border: 1px solid rgb(109, 109, 109);
 `

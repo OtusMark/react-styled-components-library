@@ -1,5 +1,5 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
-import styled, {StyledComponentProps} from "styled-components";
+import styled, {StyledComponentProps} from "styled-components/macro";
 import {ThemeType} from "../../styles/theme";
 
 // тип пропсов обычной кнопки
@@ -14,6 +14,7 @@ export const Button: React.FC<PropsType> = ({...restProps}) => {
     );
 }
 
+// Styles
 const StyledButton = styled.button<StyledComponentProps<any, ThemeType, any, any>>`
   border: none;
   cursor: pointer;
