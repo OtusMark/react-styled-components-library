@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {Button} from "./components/clear/Button";
-import {Checkbox} from "./components/clear/Checkbox";
-import {InputText} from "./components/clear/InputText";
+import {Button} from "./components/clear/Button/Button";
+import {Checkbox} from "./components/clear/Checkbox/Checkbox";
+import {InputText} from "./components/clear/InputText/InputText";
 import { Card } from './components/layout/Card';
 import {Container} from "./components/layout/Container";
-import {RadioButtons} from "./components/clear/RadioButtons";
+import {RadioButtons} from "./components/clear/RadioButtons/RadioButtons";
 import styled from "styled-components/macro";
-import EditableSpan from "./components/clear/EditableSpan";
-import {Select} from "./components/clear/Select";
-import {RangeSlider} from "./components/clear/RangeSlider";
+import EditableSpan from "./components/clear/EditableSpan/EditableSpan";
+import {Select} from "./components/clear/Select/Select";
+import {RangeSlider} from "./components/clear/RangeSlider/RangeSlider";
+import { ImageSliderDemo } from './components/clear/ImageSlider/ImageSliderDemo';
 
 function App() {
 
@@ -25,40 +26,51 @@ function App() {
     }
 
     return (
-        <Container>
+        <StyledContainer>
             <CardsWrapper>
-                <Card >
+                <StyledCard>
                     <Button>Button</Button>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <Checkbox onChange={() => setBoolean(!boolean)} checked={boolean}>Checkbox</Checkbox>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <InputText error={'asdf'}/>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <RadioButtons options={arr}
                                   value={value}
                                   onChangeOption={onChangeOption}/>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <EditableSpan value={'asdfasdf'} error={'asdf'}/>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <Select options={arr} value={value} onChangeOption={onChangeOption}/>
-                </Card>
-                <Card>
+                </StyledCard>
+                <StyledCard>
                     <RangeSlider values={values} onChangeRange={changeRangeInputValues}/>
-                </Card>
+                </StyledCard>
+                <StyledCard>
+                    <ImageSliderDemo/>
+                </StyledCard>
             </CardsWrapper>
-        </Container>
+        </StyledContainer>
     )
 }
 
 export default App;
 
+const StyledContainer = styled(Container)`
+  margin-left: -30px;
+`
+
 const CardsWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
+`
+
+const StyledCard = styled(Card)`
+  margin: 0 0 30px 30px;
 `

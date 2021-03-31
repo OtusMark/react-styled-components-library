@@ -1,6 +1,6 @@
 import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from "react";
-import {InputText} from "./InputText";
-import {SvgPen} from "../svg/SvgPen";
+import {InputText} from "../InputText/InputText";
+import {SvgPen} from "./SvgPen";
 import styled, {StyledComponentProps} from "styled-components/macro";
 
 // тип пропсов обычного инпута
