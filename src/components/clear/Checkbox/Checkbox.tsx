@@ -1,15 +1,5 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from "react";
 import styled from "styled-components/macro";
-import {SvgPen} from "../EditableSpan/SvgPen";
-
-
-// тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-
-type PropsType = DefaultInputPropsType & {
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void
-    children: string
-};
 
 export const Checkbox: React.FC<PropsType> = (props) => {
 
@@ -107,3 +97,11 @@ const StyledLabel = styled.label<any>`
     background-color: ${({theme}) => theme.color.grey["700"]};
   }
 `
+
+// Types
+type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+type PropsType = DefaultInputPropsType & {
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    children: string // Checkbox text
+};

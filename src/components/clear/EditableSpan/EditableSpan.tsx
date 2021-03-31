@@ -1,4 +1,4 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from "react";
+import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState, useEffect} from "react";
 import {InputText} from "../InputText/InputText";
 import {SvgPen} from "./SvgPen";
 import styled, {StyledComponentProps} from "styled-components/macro";
@@ -11,64 +11,57 @@ type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
-    onChangeText?: (value: string) => void
-    onEnter?: () => void
+    value: string
+    onChangeText: (value: string) => void
+    editMode: boolean
+    deactivateEditMode: () => void
+    activateEditMode: () => void
     error?: string
-    spanClassName?: string
 
     spanProps?: DefaultSpanPropsType // пропсы для спана
 };
 
-const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
-    {
-        autoFocus, // игнорировать изменение этого пропса
+const SuperEditableSpan: React.FC<SuperEditableSpanType> = (props) => {
+
+    const {
+        value,
+        onChangeText,
+        editMode,
+        deactivateEditMode,
+        activateEditMode,
+        error,
+        autoFocus, // Ignore autoFocus
         onBlur,
-        onEnter,
         spanProps,
 
-        ...restProps// все остальные пропсы попадут в объект restProps
-    }
-) => {
-    const [editMode, setEditMode] = useState<boolean>(false);
-    const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {};
+        ...restProps
+    } = props
 
-    const onEnterCallback = () => {
-        setEditMode(false); // выключить editMode при нажатии Enter
 
-        onEnter && onEnter();
-    };
-    const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
-        setEditMode(false); // выключить editMode при нажатии за пределами инпута
-
-        onBlur && onBlur(e);
-    };
-    const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        setEditMode(true); // включить editMode при двойном клике
-
-        onDoubleClick && onDoubleClick(e);
-    };
+    const {children, className, ...restSpanProps} = spanProps || {};
 
     return (
         <>
             {editMode
                 ? (
                     <EditModeInput
-                        autoFocus // пропсу с булевым значением не обязательно указывать true
-                        onBlur={onBlurCallback}
-                        onEnter={onEnterCallback}
+                        autoFocus // autoFocus is always true
+                        onChangeText={onChangeText}
+                        onBlur={deactivateEditMode}
+                        onEnter={deactivateEditMode}
+                        error={error}
+                        value={value}
 
-                        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                        {...restProps} // The rest of the props include value
                     />
                 ) : (
                     <EditMOdeOff>
                         <StyledSpan
-                            onDoubleClick={onDoubleClickCallBack}
+                            onDoubleClick={activateEditMode}
                             {...restSpanProps}
-                        >
-                        {/*если нет захардкодженного текста для спана, то значение инпута*/}
-                            {children || restProps.value}
+                        >{value}
                         </StyledSpan>
-                        <StyledSvgPen onClick={onDoubleClickCallBack} className={'StyledSvgPen'}/>
+                        <StyledSvgPen onClick={activateEditMode} className={'StyledSvgPen'}/>
                     </EditMOdeOff>
                 )
             }
@@ -84,6 +77,9 @@ const EditModeInput = styled(InputText)<StyledComponentProps<any, any, any, any>
 
   border: none;
   border-radius: 0;
+
+  border-bottom: 1px solid ${({theme}) => theme.color.grey["400"]};
+  
   box-shadow: none;
   outline: none;
 

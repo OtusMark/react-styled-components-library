@@ -1,59 +1,54 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button} from "./components/clear/Button/Button";
-import {Checkbox} from "./components/clear/Checkbox/Checkbox";
-import {InputText} from "./components/clear/InputText/InputText";
-import { Card } from './components/layout/Card';
+import {Card} from './components/layout/Card';
 import {Container} from "./components/layout/Container";
-import {RadioButtons} from "./components/clear/RadioButtons/RadioButtons";
 import styled from "styled-components/macro";
-import EditableSpan from "./components/clear/EditableSpan/EditableSpan";
-import {Select} from "./components/clear/Select/Select";
-import {RangeSlider} from "./components/clear/RangeSlider/RangeSlider";
-import { ImageSliderDemo } from './components/clear/ImageSlider/ImageSliderDemo';
+import {ImageSliderDemo} from './components/clear/ImageSlider/ImageSliderDemo';
+import {CheckboxDemo} from "./components/clear/Checkbox/checkboxDemo";
+import {InputTextDemo} from "./components/clear/InputText/InputTextDemo";
+import {EditableSpanDemo} from "./components/clear/EditableSpan/EditableSpanDemo";
+import {RadioButtonsDemo} from './components/clear/RadioButtons/RadioButtonsDemo';
+import {SelectDemo} from './components/clear/Select/SelectDemo';
+import {RangeSliderDemo} from "./components/clear/RangeSlider/RangeSliderDemo";
 
 function App() {
-
-    // I must organize examples for each component!!!
-    const [boolean, setBoolean] = useState(false)
-    console.log(boolean)
-
-    const arr = ["One", "Two", "Three"];
-    const [value, onChangeOption] = useState(arr[1]);
-
-    const [values, setValues] = useState([0, 100]);
-    const changeRangeInputValues = (values: Array<number>) => {
-        setValues(values)
-    }
 
     return (
         <StyledContainer>
             <CardsWrapper>
+
                 <StyledCard>
                     <Button>Button</Button>
                 </StyledCard>
+
                 <StyledCard>
-                    <Checkbox onChange={() => setBoolean(!boolean)} checked={boolean}>Checkbox</Checkbox>
+                    <CheckboxDemo/>
                 </StyledCard>
+
                 <StyledCard>
-                    <InputText error={'asdf'}/>
+                    <InputTextDemo/>
                 </StyledCard>
+
                 <StyledCard>
-                    <RadioButtons options={arr}
-                                  value={value}
-                                  onChangeOption={onChangeOption}/>
+                    <EditableSpanDemo/>
                 </StyledCard>
+
                 <StyledCard>
-                    <EditableSpan value={'asdfasdf'} error={'asdf'}/>
+                    <RadioButtonsDemo/>
                 </StyledCard>
+
                 <StyledCard>
-                    <Select options={arr} value={value} onChangeOption={onChangeOption}/>
+                    <SelectDemo/>
                 </StyledCard>
+
                 <StyledCard>
-                    <RangeSlider values={values} onChangeRange={changeRangeInputValues}/>
+                    <RangeSliderDemo/>
                 </StyledCard>
+
                 <StyledCard>
                     <ImageSliderDemo/>
                 </StyledCard>
+
             </CardsWrapper>
         </StyledContainer>
     )
