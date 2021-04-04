@@ -23,9 +23,8 @@ export const Select: React.FC<SuperSelectPropsType> = (
 
     const mappedOptions: any[] | undefined = options ? options.map(option => {
         return (
-            <>
-                <StyledInput key={option}
-                             onChange={onChangeCallback}
+            <React.Fragment key={option}>
+                <StyledInput onChange={onChangeCallback}
                              name="test" type="radio"
                              id={option}
                              value={option}
@@ -33,16 +32,15 @@ export const Select: React.FC<SuperSelectPropsType> = (
                              {...restProps}
                 />
                 <Option className={"option"} htmlFor={option}>{option}</Option>
-            </>
+            </React.Fragment>
         )
     }) : undefined;
 
-return (
+    return (
         <SelectWrapper tabIndex={1}>
             {mappedOptions}
-</SelectWrapper>
-)
-    ;
+        </SelectWrapper>
+    )
 }
 
 // Styles
@@ -58,11 +56,10 @@ const SelectWrapper = styled.div`
 
   cursor: pointer;
 
-  
 
   &:focus {
     box-shadow: none;
-    
+
     & .option {
       position: relative;
 
@@ -107,7 +104,7 @@ const Option = styled.label`
 const StyledInput = styled.input<StyledComponentProps<any, any, any, any>>`
   position: absolute;
   left: -99999px;
-  
+
   opacity: 0;
 
   // Active value
@@ -128,7 +125,7 @@ const StyledInput = styled.input<StyledComponentProps<any, any, any, any>>`
   // Arrow
   &:checked + label:after {
     content: '';
-    
+
     position: absolute;
     right: 15px;
     top: calc(50% - 2.5px);
@@ -146,7 +143,7 @@ const StyledInput = styled.input<StyledComponentProps<any, any, any, any>>`
   // Square containing the arrow
   &:checked + label:before {
     content: '';
-    
+
     position: absolute;
     right: 0;
 
