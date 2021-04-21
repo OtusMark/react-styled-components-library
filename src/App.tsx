@@ -1,15 +1,17 @@
 import React from 'react';
-import {Button} from "./components/clear/Button/Button";
+import {Button} from "./components/Button/Button";
 import {Card} from './components/layout/Card';
 import {Container} from "./components/layout/Container";
 import styled from "styled-components/macro";
-import {ImageSliderDemo} from './components/clear/ImageSlider/ImageSliderDemo';
-import {CheckboxDemo} from "./components/clear/Checkbox/checkboxDemo";
-import {InputTextDemo} from "./components/clear/InputText/InputTextDemo";
-import {EditableSpanDemo} from "./components/clear/EditableSpan/EditableSpanDemo";
-import {RadioButtonsDemo} from './components/clear/RadioButtons/RadioButtonsDemo';
-import {SelectDemo} from './components/clear/Select/SelectDemo';
-import {RangeSliderDemo} from "./components/clear/RangeSlider/RangeSliderDemo";
+import {ImageSliderDemo} from './components/ImageSlider/ImageSliderDemo';
+import {CheckboxDemo} from "./components/Checkbox/checkboxDemo";
+import {InputTextDemo} from "./components/InputText/InputTextDemo";
+import {EditableSpanDemo} from "./components/EditableSpan/EditableSpanDemo";
+import {RadioButtonsDemo} from './components/RadioButtons/RadioButtonsDemo';
+import {SelectDemo} from './components/Select/SelectDemo';
+import {RangeSliderDemo} from "./components/RangeSlider/RangeSliderDemo";
+import {PaginationDemo} from "./components/Pagination/PaginationDemo";
+import {FilterDemo} from "./components/Filter/FilterDemo";
 
 function App() {
 
@@ -47,6 +49,14 @@ function App() {
 
                 <StyledCard>
                     <ImageSliderDemo/>
+                </StyledCard>
+
+                <StyledCard>
+                    <FilterDemo/>
+                </StyledCard>
+
+                <StyledCard>
+                    <PaginationDemo/>
                 </StyledCard>
 
             </CardsWrapper>
