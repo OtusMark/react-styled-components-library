@@ -1,6 +1,7 @@
 {
   "name": "react-styled-components-library",
   "version": "0.1.0",
+  "homepage": "https://otusmark.github.io/react-styled-components-library/",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -26,6 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "svg-jsx": "npx @svgr/cli src/assets/svg --ignore-existing --out-dir src/components/svg --svgo-config src/svgo.json --typescript"
   },
   "eslintConfig": {
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0",
+    "gh-pages": "^3.1.0",
     "styled-components.macro": "^1.0.0"
   }
 }
