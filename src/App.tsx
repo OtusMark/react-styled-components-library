@@ -12,6 +12,8 @@ import {SelectDemo} from './components/Select/SelectDemo';
 import {RangeSliderDemo} from "./components/RangeSlider/RangeSliderDemo";
 import {PaginationDemo} from "./components/Pagination/PaginationDemo";
 import {FilterDemo} from "./components/Filter/FilterDemo";
+import {InputFile} from "./components/InputFile/InputFile";
+import {Avatar} from "./components/Avatar/Avatar";
 
 function App() {
 
@@ -57,6 +59,14 @@ function App() {
 
                 <StyledCard>
                     <PaginationDemo/>
+                </StyledCard>
+
+                <StyledCard>
+                    <Avatar src='https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-520-couple-avatar-boy-avatar-little-dinosaur-cartoon-cute-image_1263411.jpg'/>
+                </StyledCard>
+
+                <StyledCard>
+                    <InputFile/>
                 </StyledCard>
 
             </CardsWrapper>
